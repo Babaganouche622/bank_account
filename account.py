@@ -1,5 +1,5 @@
 import random
-import itertools
+import re
 
 
 class Account:
@@ -21,20 +21,21 @@ class Account:
         self.number = number
 
 
-    def getBalance(self):
+    def get_balance(self):
         return self.balance
 
-    def getAccountName(self):
+    def get_account_name(self):
         return self.name
 
-    def getAccountNumber(self):
-        return self.number
+    def get_account_number(self):
+        number = re.sub("(\d)", "*", str(self.number), 4)
+        return number
 
-    def getAccountPassword(self):
+    def get_account_password(self):
         return self.password
 
 
-    def setAccountBalance():
+    def set_account_balance():
         """
         Ask the user if they want to withdraw or Deposit before coming inside the class
         here we will check which the user input, then condition which Withdraw/Deposit will trigger
@@ -56,6 +57,6 @@ class Account:
 
 brian = Account('Brian', "Password", 0)
 brian.set_account_number()
-print(brian.number)
+print(brian.get_account_number())
 print(brian.__dict__)
 brian.set_account_number()

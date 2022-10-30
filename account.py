@@ -11,8 +11,6 @@ class Account:
         self.balance = balance
         self.number = ''
 
-
-
     def get_balance(self):
         return self.balance
 
@@ -51,24 +49,16 @@ class Account:
         time.sleep(1)
 
     def set_withdraw(self, amount):
-        if self.balance < amount:
+        if self.balance < float(amount):
             self.balance -= 10
             amount = 0
             print(f"Ho ho ho ho, you didn't check your balance first. Thanks bucko, CHA CHING!\nCharged an NSF fee of 10$.\nNew balance: {self.balance}$")
             time.sleep(1)
             return amount
         else:
-            self.balance -= round(float(amount), 2)
+            tax = round(float(amount) * 1.5, 2)
+            self.balance -= round(float(amount), 2) + tax
             print(f"You withdrew {amount}$. Your balance is {self.balance}$")
             time.sleep(1)
             return amount
     
-
-
-# brian = Account("Brian", "Cahill", "Password", 0)
-# brian.set_account_number()
-# print(brian.get_account_number())
-# print(brian.__dict__)
-# brian.set_account_number()
-# brian.set_deposit(50000)
-# brian.set_withdraw(1000000)

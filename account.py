@@ -36,6 +36,9 @@ class Account:
         number = re.sub("(\d)", "*", str(self.number), 4)
         return number
 
+    def get_account_number_raw(self):
+        return self.number
+
     def set_account_password():
         pass
 
@@ -44,23 +47,28 @@ class Account:
 
     def set_deposit(self, amount):
         self.balance += round(float(amount), 2)
-        print(f"You deposited {amount}. Your balance is {self.balance}$")
+        print(f"You deposited {amount}$. Your balance is {self.balance}$")
         time.sleep(1)
 
     def set_withdraw(self, amount):
         if self.balance < amount:
             self.balance -= 10
-            raise print("Ho ho ho ho, you didn't check your balance first. Thanks bucko, CHA CHING!")
+            amount = 0
+            print(f"Ho ho ho ho, you didn't check your balance first. Thanks bucko, CHA CHING!\nCharged an NSF fee of 10$.\nNew balance: {self.balance}$")
+            time.sleep(1)
+            return amount
         else:
             self.balance -= round(float(amount), 2)
-            print(f"You withdrew {amount}. Your balance is {self.balance}$")
-            time.sleep(1)    
+            print(f"You withdrew {amount}$. Your balance is {self.balance}$")
+            time.sleep(1)
+            return amount
     
 
 
-brian = Account("Brian", "Cahill", "Password", 0)
-brian.set_account_number()
-print(brian.get_account_number())
-print(brian.__dict__)
-brian.set_account_number()
-brian.set_deposit(50000)
+# brian = Account("Brian", "Cahill", "Password", 0)
+# brian.set_account_number()
+# print(brian.get_account_number())
+# print(brian.__dict__)
+# brian.set_account_number()
+# brian.set_deposit(50000)
+# brian.set_withdraw(1000000)

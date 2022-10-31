@@ -31,6 +31,16 @@ class Bank:
                 name.set_deposit(amount)
         return amount
 
+    def add_interest(self, account_number):
+        """
+        Pass through the Bank accounts list, and the account number we are generating interest for.
+        Loop through and catch the correct account, apply the interest.
+        Return that interest was applied with the amount to the user.
+        """
+        for account in self.accounts:
+            if account.get_account_number_raw() == account_number:
+                interest_amount = account.generate_interest()
+                print(f"Collected {interest_amount}$ in transaction interest. Thanks!\n")
     
     def add_account_numbers(self):
         """

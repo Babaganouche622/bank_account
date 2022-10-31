@@ -116,6 +116,8 @@ def banking(your_account):
                                     print(f"Killer steal, you stole {send_amount}, your new balance is: {account.get_balance()}") 
             case _:
                 print("Unrecognised input.")
+        # Added the interest charge here so it happens for each loop, but NOT when the user chooses to exit the program. We don't charge you for leaving.
+        bank_of_hell.add_interest(your_account.get_account_number_raw())
 """
 This is where we actually run the app. There was likely a way to contain the switch conditionals inside their own classes, 
 but I've worked on this too long and need to stop somewhere.

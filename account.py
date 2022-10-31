@@ -11,6 +11,17 @@ class Account:
         self.password = password
         self.balance = balance
         self.number = ''
+        self.interest = 0.001
+
+    def generate_interest(self):
+        """
+        This generates interest for the bank every time the user interacts with the machine.
+        We are a greedy bank, you don't earn interest, you only pay us if you need to access anything.
+        Return the interest amount taking to be printed for the user.
+        """
+        interest_amount = round(self.balance * self.interest, 2)
+        self.balance -= interest_amount
+        return interest_amount
 
     def get_balance(self):
         return self.balance
